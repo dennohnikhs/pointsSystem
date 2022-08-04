@@ -2,10 +2,10 @@ const mysql = require("mysql");
 const { makeDb } = require("mysql-async-simple");
 
 let connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "point_system",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_NAME || "point_system",
 });
 
 const db = makeDb();
@@ -14,7 +14,7 @@ async function executeQuery(sql, fields) {
   try {
     await db.connect(connection);
   } catch (e) {
-    console.log("iko shida bwana plumu");
+    console.log("an error occurred");
   }
 
   returnObj = null;
