@@ -1,14 +1,14 @@
 const express = require("express");
-const { protect, admin } = require("../../middleware/auth-middleware");
-
+const { login } = require("../../controllers/auth_controller");
 const router = express.Router();
+
 /**
  * @openapi
- * /api/teacher/new:
+ * /api/login:
  *  post:
  *     tags:
- *     - Teacher
- *     summary: add new teacher
+ *     - Login
+ *     summary: login teacher
  *     requestBody:
  *      required: true
  *      content:
@@ -16,24 +16,20 @@ const router = express.Router();
  *           schema:
  *            type: object
  *            required:
- *              - name
- *              - phone_number
  *              - email
  *              - password
+ *              - isAdmin
  *            properties:
- *              name:
- *                type: string
- *              phone_number:
- *                type: string
  *              email:
  *                type: string
  *              password:
  *                type: string
+ *              isAdmin:
+ *                type: boolean
  *            example:
- *              name: Rashon Kiptoo
- *              phone_number: "0702820251"
- *              email: odipoo2343@gmail.com
- *              password:   D23hyg*&
+ *              email: bwega@gmail.com
+ *              password: 123456
+ *              isAdmin: true
  *     responses:
  *      200:
  *        description: Ok
@@ -42,5 +38,6 @@ const router = express.Router();
  *      404:
  *        description: Not Found
  */
-router.post("/api/teacher/new", protect, admin, addTeacher);
+
+router.post("/api/login", login);
 module.exports = router;

@@ -1,5 +1,5 @@
 const express = require("express");
-const { addStudents } = require("../../controllers/controller");
+const { addStudent } = require("../../controllers/studentControllers");
 const router = express.Router();
 /**
  * @openapi
@@ -42,5 +42,6 @@ const router = express.Router();
  *        description: Not Found
  */
 
-router.post("/api/student/new", addStudents);
+router.post("/api/student/new", addStudent);
+
 module.exports = router;

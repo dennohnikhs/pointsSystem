@@ -3,7 +3,7 @@ const {
   validateAddStudents,
 } = require("../utils/validator/validate_add_students");
 
-async function addStudents(req, res) {
+async function addStudent(req, res) {
   try {
     const validationResult = await validateAddStudents(req);
 
@@ -20,7 +20,7 @@ async function addStudents(req, res) {
       req.body.class,
       req.body.stream
     );
-    // console.log(req);
+    console.log(req.body.name);
     return res.json({
       success: true,
       success_message: "student added successfully",
@@ -39,6 +39,6 @@ async function addStudents(req, res) {
 }
 
 module.exports = {
-  addStudents,
+  addStudent,
   // addTeachers,
 };

@@ -1,4 +1,5 @@
 const { executeQuery } = require("../../database/connection");
+const bcrypt = require("bcryptjs");
 
 class Teacher {
   static async addOne(name, email, phone, password, role) {
@@ -19,6 +20,38 @@ class Teacher {
 
     if (result && result[0].existing_count > 0) return true;
 
+    return false;
+  }
+
+  static async validateTeacher(email, password) {
+    const result = await executeQuery(
+      "SELECT * FROM teacher WHERE email = (?) LIMIT 1",
+      [email]
+    );
+    if (result.length > 0) {
+      const teacher = result[0];
+      let passwordVerified = await bcrypt.compare(password, teacher.password);
+      if (!passwordVerified) {
+        return false;
+      }
+
+      delete teacher.password;
+      return teacher;
+    }
+    return false;
+  }
+
+  static async getAllTeachers(email, password, name, phone_number) {
+    await executeQuery("SELECT * FROM teacher", [
+      email,
+      password,
+      name,
+      phone_number,
+    ]);
+
+    if (result && result[0].existing_count > 0) {
+      return result;
+    }
     return false;
   }
 }
