@@ -2,7 +2,6 @@ const express = require("express");
 const pointsRoutes = require("../routes/routes");
 const addStudentRouter = require("./new_student");
 const login = require("./login");
-const swaggerRoutes = require("../../../swagger");
 const router = express.Router();
 
 /**
@@ -20,6 +19,5 @@ router.get("/healthcheck", (req, res) => res.sendStatus(200));
 router.use(pointsRoutes);
 router.use(addStudentRouter);
 router.use(login);
-router.use(swaggerRoutes);
 
 module.exports = router;

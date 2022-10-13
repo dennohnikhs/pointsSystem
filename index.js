@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   console.log("response", req);
 });
 app.use(express.json());
-app.use(authMiddleware);
+// app.use(authMiddleware);
 app.use(v1Router);
 dotenv.config({ path: "config.env" });
 const port = process.env.PORT || 5500;
