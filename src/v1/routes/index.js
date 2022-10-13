@@ -6,11 +6,11 @@ const router = express.Router();
 
 /**
  * @openapi
- * /healthcheck:
+ * /Healthcheck:
  *  get:
  *     tags:
  *     - Healthcheck
- *     description: Returns API operational status
+ *     description: API operational status
  *     responses:
  *       200:
  *         description: API is  running
