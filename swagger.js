@@ -23,6 +23,7 @@ function swaggerDocs(app, port) {
   app.get("/docs.json", (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.send(swaggerSpec);
+    console.log("response");
   });
   console.info(`Docs available at http://localhost:${port}/docs`);
 }

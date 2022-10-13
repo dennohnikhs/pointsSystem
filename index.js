@@ -7,6 +7,7 @@ const app = express();
 
 app.get("/", (req, res) => {
   res.send("Server has started...");
+  console.log("response", req);
 });
 app.use(express.json());
 app.use(authMiddleware);

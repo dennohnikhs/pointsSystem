@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 async function protect(req, res, next) {
-  if (req.url == "/api/login" || req.url == "/docs" || res.originalUrl == "/") {
+  if (req.url == "/api/login" || req.url == "/docs" || req.originalUrl == "/") {
     return next();
   }
   try {
