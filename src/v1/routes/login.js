@@ -18,7 +18,6 @@ const router = express.Router();
  *            required:
  *              - email
  *              - password
- *              - isAdmin
  *            properties:
  *              email:
  *                type: string
