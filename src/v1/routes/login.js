@@ -18,6 +18,7 @@ const router = express.Router();
  *            required:
  *              - email
  *              - password
+ *              - isAdmin
  *            properties:
  *              email:
  *                type: string
@@ -26,9 +27,9 @@ const router = express.Router();
  *              isAdmin:
  *                type: boolean
  *            example:
- *              email: bwega@gmail.com
- *              password: 123456
- *              isAdmin: true
+ *              email: langat@gmail.com
+ *              password: "123456"
+ *              isAdmin: false
  *     responses:
  *      200:
  *        description: Ok

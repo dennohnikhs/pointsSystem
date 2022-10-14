@@ -1,3 +1,6 @@
+const express = require("express");
+const { getStudent } = require("../../controllers/studentControllers");
+const router = express.Router();
 /**
  * @swagger
  *  components:
@@ -86,3 +89,5 @@
  *       400:
  *         description: Bad request
  */
+router.get("/api/students", getStudent);
+module.exports = router;

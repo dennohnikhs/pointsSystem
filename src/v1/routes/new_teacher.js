@@ -1,5 +1,5 @@
 const express = require("express");
-const { protect, admin } = require("../../middleware/auth-middleware");
+const addTeacher = require("../../controllers/teacherController");
 
 const router = express.Router();
 /**
@@ -20,6 +20,7 @@ const router = express.Router();
  *              - phone_number
  *              - email
  *              - password
+ *              - role
  *            properties:
  *              name:
  *                type: string
@@ -29,11 +30,14 @@ const router = express.Router();
  *                type: string
  *              password:
  *                type: string
+ *              role:
+ *                type: integer
  *            example:
- *              name: Rashon Kiptoo
+ *              name: Mr Rashon
  *              phone_number: "0702820251"
  *              email: odipoo2343@gmail.com
- *              password:   D23hyg*&
+ *              password:   123456
+ *              role: 1
  *     responses:
  *      200:
  *        description: Ok
@@ -42,5 +46,5 @@ const router = express.Router();
  *      404:
  *        description: Not Found
  */
-router.post("/api/teacher/new", protect, admin, addTeacher);
+router.post("/api/teacher/new", addTeacher);
 module.exports = router;

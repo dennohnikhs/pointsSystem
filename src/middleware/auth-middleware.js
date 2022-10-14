@@ -1,7 +1,9 @@
 const jwt = require("jsonwebtoken");
+const isIgnored = require("../utils/unprotected");
 
 async function protect(req, res, next) {
-  if (req.url == "/api/login" || req.url == "/docs" || req.originalUrl == "/") {
+  // console.log({ url: req.url, originalUrl: req.originalUrl });
+  if (isIgnored(req.url)) {
     return next();
   }
   try {
@@ -27,30 +29,3 @@ async function protect(req, res, next) {
   }
 }
 module.exports = protect;
-
-// async function protect(req, res, next) {
-//   try {
-// if (
-//   req.headers.authorization &&
-//   req.headers.authorization.startsWith("Bearer")
-// ) {
-//   token = req.header.authorization.split(" ")[1];
-//   jwt.verify(token, process.env.JWT_SECRET);
-//   req.user = await Teacher.validateTeacher(teacherDetails.id); // find teacher with userDetails.id
-//   next();
-// }
-//   } catch (error) {
-//     res.status(404).json({
-//       message: "User not found.",
-//     });
-//   }
-// }
-// function isAdmin(req, res, next) {
-//   if (req.user && req.user.role === ADMIN) {
-//     next();
-//   } else {
-//     res.status(403).json({
-//       message: "you are not authorized  as an admin!",
-//     });
-//   }
-// }

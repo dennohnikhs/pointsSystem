@@ -21,6 +21,10 @@ class Student {
 
     return false;
   }
+  static async getAll() {
+    const result = await executeQuery("SELECT * FROM student", []);
+    return result;
+  }
 }
 module.exports = {
   Student,

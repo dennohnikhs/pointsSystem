@@ -37,8 +37,29 @@ async function addStudent(req, res) {
     }
   }
 }
+async function getStudents(req, res) {
+  try {
+    let result = await Student.getAll();
+    return res.json({
+      success: true,
+      success_message: "list of students",
+      list_of_students: result,
+    });
+  } catch (error) {
+    {
+      console.log("Error while trying to get students");
+      console.log({ error });
+      res.json({
+        success: false,
+        success_message:
+          "Oops!!! an error occurred while trying to get students",
+      });
+    }
+  }
+}
 
 module.exports = {
   addStudent,
+  getStudents,
   // addTeachers,
 };

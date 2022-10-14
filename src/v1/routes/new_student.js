@@ -29,10 +29,10 @@ const router = express.Router();
  *              stream:
  *                type: string
  *            example:
- *              name: Junet Mohammed
- *              admission_number: C4567
- *              class: 8
- *              stream: B
+ *              name: William Ruto
+ *              admission_number: C9567
+ *              class: 5
+ *              stream: A
  *     responses:
  *      200:
  *        description: Ok
