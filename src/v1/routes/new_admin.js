@@ -41,5 +41,5 @@ const router = express.Router();
  *        description: Not Found
  */
 
-router.post("/api/admin/new");
+router.post("/api/admin/new", addAdmin);
 module.exports = router;
