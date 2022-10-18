@@ -1,4 +1,5 @@
 const express = require("express");
+const { addSession } = require("../../controllers/sessionController");
 const router = express.Router();
 /**
  * @openapi
@@ -37,5 +38,5 @@ const router = express.Router();
  *        description: Not Found
  */
 
-router.post("/api/session/new");
+router.post("/api/session/new", addSession);
 module.exports = router;

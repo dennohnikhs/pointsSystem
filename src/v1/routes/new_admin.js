@@ -1,4 +1,5 @@
 const express = require("express");
+const { addAdmin } = require("../../controllers/adminController");
 const router = express.Router();
 /**
  * @openapi
@@ -28,10 +29,10 @@ const router = express.Router();
  *              password:
  *                type: string
  *            example:
- *              name: Junet Mohammed
- *              phone_number: "07898787898"
- *              email: 45678gjdu@gmail.com
- *              password: Btuyt564*&
+ *              name: deno
+ *              phone_number: "0717019058"
+ *              email: deno@gmail.com
+ *              password: 123456
  *     responses:
  *      200:
  *        description: Ok

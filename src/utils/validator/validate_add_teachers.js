@@ -1,3 +1,5 @@
+const { Teacher } = require("../../models/teacher/teacher");
+
 async function validateAddTeacher(req) {
   if (!req.body.name) {
     return {
@@ -34,11 +36,11 @@ async function validateAddTeacher(req) {
   if (typeof req.body.name !== "string") {
     return {
       isValid: false,
-      message: "name cannot be a number",
+      message: "Name cannot be a number",
     };
   }
-  const studentExists = await Teacher.exists(req.body.email);
-  if (studentExists) {
+  const teacherExists = await Teacher.exists(req.body.email);
+  if (teacherExists) {
     return {
       isValid: false,
       message: "Teacher details exists,please add new teacher",

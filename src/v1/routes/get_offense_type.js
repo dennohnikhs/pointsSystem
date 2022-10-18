@@ -1,5 +1,7 @@
 const express = require("express");
-const { getAllTeachers } = require("../../controllers/teacherController");
+const {
+  getAllOffenseTypes,
+} = require("../../controllers/offenseTypeController");
 const router = express.Router();
 
 /**
@@ -97,5 +99,5 @@ const router = express.Router();
  *       400:
  *         description: Bad request
  */
-router.get("/api/teachers", getAllTeachers);
+router.get("/api/offense_type", getAllOffenseTypes);
 module.exports = router;

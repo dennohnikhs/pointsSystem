@@ -1,5 +1,5 @@
 const express = require("express");
-const { getStudent } = require("../../controllers/studentControllers");
+const { getStudents } = require("../../controllers/studentControllers");
 const router = express.Router();
 /**
  * @swagger
@@ -89,5 +89,5 @@ const router = express.Router();
  *       400:
  *         description: Bad request
  */
-router.get("/api/students", getStudent);
+router.get("/api/students", getStudents);
 module.exports = router;

@@ -1,3 +1,7 @@
+const express = require("express");
+const { getAdmins } = require("../../controllers/adminController");
+const router = express.Router();
+
 /**
  * @swagger
  *  components:
@@ -18,10 +22,10 @@
  *                 password:
  *                    type: string
  *      example:
- *            name: Martha karua
+ *            name: Rashon
  *            phone_number: "0723664765"
- *            email: 1234@example.com
- *            password: C56fghrt*
+ *            email: rashon@example.com
+ *            password: 123456
  */
 
 /**
@@ -86,3 +90,5 @@
  *       400:
  *         description: Bad request
  */
+router.get("/api/admins", getAdmins);
+module.exports = router;

@@ -12,10 +12,10 @@ class Teacher {
       console.log({ error });
     }
   }
-  static async exists(phone) {
+  static async exists(email) {
     const result = await executeQuery(
-      "SELECT COUNT(*) AS existing_count FROM teacher WHERE phone_number = (?)",
-      [phone]
+      "SELECT COUNT(*) AS existing_count FROM teacher WHERE email = (?)",
+      [email]
     );
 
     if (result && result[0].existing_count > 0) return true;
@@ -41,20 +41,9 @@ class Teacher {
     return false;
   }
 
-  static async getAllTeachers(email, password, name, phone_number) {
-    await executeQuery("SELECT * FROM teacher", [
-      email,
-      password,
-      name,
-      phone_number,
-    ]);
-
-    if (result && result[0].existing_count > 0) {
-      return result;
-    }
-    return false;
+  static async getAll() {
+    const result = await executeQuery("SELECT * FROM teacher", []);
+    return result;
   }
 }
-module.exports = {
-  Teacher,
-};
+module.exports = { Teacher };

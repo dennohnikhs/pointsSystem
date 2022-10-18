@@ -11,19 +11,13 @@ let connection = mysql.createConnection({
 const db = makeDb();
 
 async function executeQuery(sql, fields) {
-  try {
-    await db.connect(connection);
-  } catch (e) {
-    console.log("an error occurred");
-  }
-
   returnObj = null;
 
   try {
+    // await db.connect(connection);
     returnObj = await db.query(connection, sql, fields);
   } catch (e) {
-    // handle exception
-  } finally {
+    console.log("an error occurred", e);
   }
 
   return returnObj;

@@ -1,12 +1,13 @@
 const express = require("express");
+const { addOffenseType } = require("../../controllers/offenseTypeController");
 const router = express.Router();
 /**
  * @openapi
- * /api/offence-type/new:
+ * /api/offense-type/new:
  *  post:
  *     tags:
- *     - Offence-type
- *     summary: add new offence type
+ *     - offense-type
+ *     summary: add new offense type
  *     requestBody:
  *      required: true
  *      content:
@@ -22,7 +23,7 @@ const router = express.Router();
  *              points:
  *                type: integer
  *            example:
- *              name: cheating
+ *              name: sleeping in class
  *              points: 10
  *     responses:
  *      200:
@@ -33,5 +34,5 @@ const router = express.Router();
  *        description: Not Found
  */
 
-router.post("/api/offence-type/new");
+router.post("/api/offense-type/new", addOffenseType);
 module.exports = router;

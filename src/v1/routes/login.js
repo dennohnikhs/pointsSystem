@@ -27,7 +27,7 @@ const router = express.Router();
  *              isAdmin:
  *                type: boolean
  *            example:
- *              email: langat@gmail.com
+ *              email: deno@gmail.com
  *              password: "123456"
  *              isAdmin: false
  *     responses:

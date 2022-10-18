@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const isIgnored = require("../utils/unprotected");
 
 async function protect(req, res, next) {
-  // console.log({ url: req.url, originalUrl: req.originalUrl });
   if (isIgnored(req.url)) {
     return next();
   }

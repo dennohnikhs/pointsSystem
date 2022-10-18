@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 /**
  * @openapi
- * /api/offence/new:
+ * /api/offense/new:
  *  post:
  *     tags:
- *     - Offence
- *     summary: add new offence
+ *     - Offense
+ *     summary: add new offense
  *     requestBody:
  *      required: true
  *      content:
@@ -15,7 +15,7 @@ const router = express.Router();
  *            type: object
  *            required:
  *              - teacher_id
- *              - offence_type_id
+ *              - offense_type_id
  *              - student_id
  *              - comment
  *              - points_deducted
@@ -23,7 +23,7 @@ const router = express.Router();
  *            properties:
  *              teacher_id:
  *                type: integer
- *              offence_type_id:
+ *              offense_type_id:
  *                type: integer
  *              student_id:
  *                type: integer
@@ -35,7 +35,7 @@ const router = express.Router();
  *                type: integer
  *            example:
  *              teacher_id: 2
- *              offence_type_id: 1
+ *              offense_type_id: 1
  *              student_id: 8
  *              comment: last warning
  *              week: 1
@@ -48,5 +48,5 @@ const router = express.Router();
  *        description: Not Found
  */
 
-router.post("/api/offence/new");
+router.post("/api/offense/new");
 module.exports = router;

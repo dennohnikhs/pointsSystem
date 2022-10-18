@@ -20,7 +20,6 @@ async function addStudent(req, res) {
       req.body.class,
       req.body.stream
     );
-    console.log(req.body.name);
     return res.json({
       success: true,
       success_message: "student added successfully",
@@ -61,5 +60,4 @@ async function getStudents(req, res) {
 module.exports = {
   addStudent,
   getStudents,
-  // addTeachers,
 };

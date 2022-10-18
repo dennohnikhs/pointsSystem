@@ -1,10 +1,10 @@
-const { Teacher } = require("../models/teacher/teacher");
 const {
   validateAddTeacher,
 } = require("../utils/validator/validate_add_teachers");
 const bcrypt = require("bcryptjs");
+const { Teacher } = require("../models/teacher/teacher");
 
-async function addTeacher() {
+async function addTeacher(req, res) {
   try {
     const validationResult = await validateAddTeacher(req);
     if (!validationResult.isValid) {
@@ -13,14 +13,14 @@ async function addTeacher() {
         error_message: validationResult.message,
       });
     }
-    let hashedPassword = await bcrypt.hash(req.body.password, 10);
-    console.log("akgh");
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
     await Teacher.addOne(
       req.body.name,
-      req.body.phone_number,
       req.body.email,
-      req.body.role,
-      hashedPassword
+      req.body.phone_number,
+      hashedPassword,
+      req.body.role
     );
     return res.json({
       success: true,
@@ -38,4 +38,24 @@ async function addTeacher() {
     }
   }
 }
-module.exports = addTeacher;
+async function getAllTeachers(req, res) {
+  try {
+    let result = await Teacher.getAll();
+    return res.json({
+      success: true,
+      success_message: "list of teachers",
+      list_of_students: result,
+    });
+  } catch (error) {
+    {
+      console.log("Error while trying to get teachers");
+      console.log({ error });
+      res.json({
+        success: false,
+        success_message:
+          "Oops!!! an error occurred while trying to get teachers",
+      });
+    }
+  }
+}
+module.exports = { addTeacher, getAllTeachers };

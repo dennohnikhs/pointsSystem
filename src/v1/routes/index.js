@@ -1,8 +1,15 @@
 const express = require("express");
-const pointsRoutes = require("../routes/routes");
-const addStudentRouter = require("./new_student");
-const login = require("./login");
-const { getStudents } = require("../../controllers/studentControllers");
+const addStudentRoutes = require("./new_student");
+const loginRoutes = require("./login");
+const addTeacherRoutes = require("./new_teacher");
+const getStudentsRoutes = require("./get_students");
+const getAdminsRoutes = require("./get_admins");
+const addAdminRoutes = require("./new_admin");
+const getAllTeachersRoutes = require("./get_teachers");
+const addOffenseTypeRoutes = require("./new_offense_type");
+const getOffenseTypes = require("./get_offense_type");
+const addSessionRoutes = require("./new_session");
+const getSessionsRoutes = require("./get-sessions");
 const router = express.Router();
 
 /**
@@ -17,9 +24,16 @@ const router = express.Router();
  *         description: API is  running
  */
 router.get("/healthcheck", (req, res) => res.sendStatus(200));
-router.use(pointsRoutes);
-router.use(addStudentRouter);
-router.use(login);
-router.use(getStudents);
+router.use(addStudentRoutes);
+router.use(loginRoutes);
+router.use(addTeacherRoutes);
+router.use(getStudentsRoutes);
+router.use(addAdminRoutes);
+router.use(getAdminsRoutes);
+router.use(getAllTeachersRoutes);
+router.use(addOffenseTypeRoutes);
+router.use(getOffenseTypes);
+router.use(addSessionRoutes);
+router.use(getSessionsRoutes);
 
 module.exports = router;

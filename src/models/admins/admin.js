@@ -20,7 +20,6 @@ class Admin {
     if (result.length > 0) {
       const admin = result[0];
       let passwordVerified = await bcrypt.compare(password, admin.password);
-      console.log(passwordVerified);
       if (!passwordVerified) {
         return false;
       }
@@ -29,6 +28,20 @@ class Admin {
       return admin;
     }
     return false;
+  }
+  static async exists(email) {
+    const result = await executeQuery(
+      "SELECT COUNT(*) AS existing_count FROM admin WHERE email = (?)",
+      [email]
+    );
+
+    if (result && result[0].existing_count > 0) return true;
+
+    return false;
+  }
+  static async getAllAdmins() {
+    const result = await executeQuery("SELECT * FROM admin", []);
+    return result;
   }
 }
 module.exports = Admin;

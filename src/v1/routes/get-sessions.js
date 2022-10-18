@@ -1,3 +1,7 @@
+const express = require("express");
+const { getSessions } = require("../../controllers/sessionController");
+const router = express.Router();
+
 /**
  * @swagger
  *  components:
@@ -78,3 +82,6 @@
  *       400:
  *         description: Bad request
  */
+
+router.get("/api/sessions", getSessions);
+module.exports = router;
