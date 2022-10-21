@@ -1,11 +1,11 @@
 const OffenseType = require("../models/offense_type/offense_type");
 const {
-  validateAddOffense,
-} = require("../utils/validator/validate_add_offense");
+  validateAddOffenseType,
+} = require("../utils/validator/validate_add_offense_type");
 
 async function addOffenseType(req, res) {
   try {
-    const validationResult = await validateAddOffense(req);
+    const validationResult = await validateAddOffenseType(req);
     if (!validationResult.isValid) {
       return res.json({
         success: false,

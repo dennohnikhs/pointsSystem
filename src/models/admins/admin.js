@@ -12,14 +12,18 @@ class Admin {
       console.log({ error });
     }
   }
-  static async validateAdmin(email, password) {
+  static async validateAdmin(adminEmail, adminPassword) {
     const result = await executeQuery(
-      "SELECT email, password FROM admin WHERE email = (?)LIMIT 1",
-      [email]
+      "SELECT id,email, password FROM admin WHERE email = (?)LIMIT 1",
+      [adminEmail, adminPassword]
     );
+    console.log(result);
     if (result.length > 0) {
       const admin = result[0];
-      let passwordVerified = await bcrypt.compare(password, admin.password);
+      let passwordVerified = await bcrypt.compare(
+        adminPassword,
+        admin.password
+      );
       if (!passwordVerified) {
         return false;
       }

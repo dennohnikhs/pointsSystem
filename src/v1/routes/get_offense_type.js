@@ -8,7 +8,7 @@ const router = express.Router();
  * @swagger
  *  components:
  *   schema:
- *     Teachers:
+ *     OffenseTypes:
  *      type: array
  *      items:
  *           type: object
@@ -17,84 +17,65 @@ const router = express.Router();
  *               properties:
  *                 name:
  *                    type: string
- *                 phone_number:
- *                    type: string
- *                 email:
- *                    type: string
- *                 stream:
- *                    type: string
+ *                 points:
+ *                    type: integer
  *      example:
- *            name: Martha karua
- *            phone_number: "0723664765"
- *            email: 1234@example.com
- *            password: C56fghrt*
- *            role: 1
+ *            name: drug abuse
+ *            points: 10
  */
 
 /**
  * @swagger
  * components:
  *  schema:
- *      teachersResponse:
+ *      offenseTypeResponse:
  *          type: object
  *          properties:
  *              success:
  *                  type: boolean
  *              success_message:
  *                  type: string
- *                  example: "list of teachers"
- *              teachers:
+ *                  example: "list of offense types"
+ *              offense_types:
  *                  type: array
  *                  items:
- *                      $ref: '#components/schema/Teachers'
+ *                      $ref: '#components/schema/OffenseTypes'
  *
  */
 
 /**
  * @openapi
- * /api/teachers:
+ * /api/offense_type:
  *  get:
  *     tags:
- *     - Teachers
- *     summary: Get all Teachers
+ *     - offenseType
+ *     summary: Get all offense types
  *     parameters:
  *       - in: query
  *         name: q
  *         schema:
  *            type: string
  *         required: false
- *         description: get teacher's name
+ *         description: get offense type name
  *       - in: query
- *         name: phone_number
+ *         name: name
  *         schema:
  *            type: string
  *         required: false
- *         description: get teacher's phone number
+ *         description: get offense type name
  *       - in: query
- *         name: email
+ *         name: points
  *         schema:
  *            type: string
  *         required: false
- *         description: get teacher's email
- *       - in: query
- *         name: password
- *         schema:
- *            type: string
- *         required: false
- *         description: get password
- *       - in: query
- *         name: role
- *         schema:
- *            type: string
- *         required: false
- *         description: get teacher's role
+ *         description: get offense type points
  *     responses:
  *       200:
  *         description: Success
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#components/schema/teachersResponse'  
+ *              $ref: '#components/schema/offenseTypeResponse'  
 
  *       400:
  *         description: Bad request

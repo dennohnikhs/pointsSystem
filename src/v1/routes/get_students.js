@@ -21,7 +21,7 @@ const router = express.Router();
  *                 stream:
  *                    type: string
  *      example:
- *            name: William Ruto
+ *            name: William
  *            admission_number: C5454
  *            class: 2
  *            stream: C

@@ -1,6 +1,6 @@
 const OffenseType = require("../../models/offense_type/offense_type");
 
-async function validateAddOffense(req) {
+async function validateAddOffenseType(req) {
   if (!req.body.name) {
     return {
       isValid: false,
@@ -28,4 +28,4 @@ async function validateAddOffense(req) {
     message: "",
   };
 }
-module.exports = { validateAddOffense };
+module.exports = { validateAddOffenseType };

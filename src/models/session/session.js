@@ -23,8 +23,10 @@ class Session {
     return false;
   }
 
-  static async getAll() {
-    const result = await executeQuery("SELECT * FROM session", []);
+  static async getSession(sessionId) {
+    const result = await executeQuery("SELECT * FROM session WHERE id = (?)", [
+      sessionId,
+    ]);
     return result;
   }
 }

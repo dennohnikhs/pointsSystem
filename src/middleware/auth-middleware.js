@@ -12,6 +12,10 @@ async function protect(req, res, next) {
     ) {
       const token = req.headers.authorization.split(" ")[1];
       jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const userId = decoded.id;
+      console.log(userId);
+
       next();
     } else {
       return res.status(400).json({

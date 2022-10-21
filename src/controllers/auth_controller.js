@@ -7,7 +7,9 @@ const jwt = require("jsonwebtoken");
 // register
 
 async function login(req, res) {
-  const { email, password, isAdmin } = req.body;
+  const email = req.body.email;
+  const password = req.body.password;
+  const isAdmin = req.body.isAdmin;
   if (!email || !password) {
     return res.json({
       message: "Please provide all details.",
@@ -15,9 +17,13 @@ async function login(req, res) {
     });
   }
   if (isAdmin) {
-    const adminDetails = await Admin.validateAdmin(email, password);
+    const adminDetails = await Admin.validateAdmin(
+      req.body.email,
+      req.body.password
+    );
+    console.log(adminDetails);
     if (adminDetails) {
-      let token = jwt.sign({ adminDetails }, process.env.JWT_SECRET, {
+      let token = jwt.sign({ id: adminDetails.id }, process.env.JWT_SECRET, {
         expiresIn: "5d",
       });
       return res.send({
@@ -32,9 +38,12 @@ async function login(req, res) {
       });
     }
   } else {
-    const teacherDetails = await Teacher.validateTeacher(email, password);
+    const teacherDetails = await Teacher.validateTeacher(
+      req.body.email,
+      req.body.password
+    );
     if (teacherDetails) {
-      let token = jwt.sign({ teacherDetails }, process.env.JWT_SECRET, {
+      let token = jwt.sign({ id: teacherDetails.id }, process.env.JWT_SECRET, {
         expiresIn: "5d",
       });
       return res.send({
@@ -50,5 +59,10 @@ async function login(req, res) {
     }
   }
 }
-
-module.exports = { login };
+async function getCurrentUserById() {
+  const token = req.body.token;
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  let userId = decoded.id;
+  console.log(userId);
+}
+module.exports = { login, getCurrentUserById };

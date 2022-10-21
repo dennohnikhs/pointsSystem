@@ -25,5 +25,13 @@ class OffenseType {
     const result = await executeQuery("SELECT * FROM offense_type", []);
     return result;
   }
+
+  static async getOne(offenseTypeId) {
+    const result = await executeQuery(
+      "SELECT * FROM offense_type WHERE id = (?)",
+      [offenseTypeId]
+    );
+    return result;
+  }
 }
 module.exports = OffenseType;

@@ -1,4 +1,5 @@
 const express = require("express");
+const { addOffense } = require("../../controllers/offenseControllers");
 const router = express.Router();
 /**
  * @openapi
@@ -34,10 +35,10 @@ const router = express.Router();
  *              week:
  *                type: integer
  *            example:
- *              teacher_id: 2
- *              offense_type_id: 1
- *              student_id: 8
- *              comment: last warning
+ *              teacher_id: 87
+ *              offense_type_id: 2
+ *              student_id: 4
+ *              comment: ""
  *              week: 1
  *     responses:
  *      200:
@@ -48,5 +49,5 @@ const router = express.Router();
  *        description: Not Found
  */
 
-router.post("/api/offense/new");
+router.post("/api/offense/new", addOffense);
 module.exports = router;

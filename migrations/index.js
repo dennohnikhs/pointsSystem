@@ -1,6 +1,6 @@
 const { createAdminTable } = require("./create_table_admin");
-const { createOffenceTable } = require("./create_table_offence");
-const { createOffenceTypeTable } = require("./create_table_offence_type");
+const { createOffenseTable } = require("./create_table_offense");
+const { createOffenseTypeTable } = require("./create_table_offense_type");
 const { createSessionTable } = require("./create_table_session");
 const { createSessionPoints } = require("./create_table_session_points");
 const { createStudentsTable } = require("./create_table_student");
@@ -9,8 +9,8 @@ const { updateStudentsTable } = require("./update_table_students");
 
 (async () => {
   await createStudentsTable();
-  await createOffenceTable();
-  await createOffenceTypeTable();
+  await createOffenseTable();
+  await createOffenseTypeTable();
   await createAdminTable();
   await createSessionTable();
   await createSessionPoints();

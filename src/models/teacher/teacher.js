@@ -23,14 +23,18 @@ class Teacher {
     return false;
   }
 
-  static async validateTeacher(email, password) {
+  static async validateTeacher(teacherEmail, teacherPassword) {
     const result = await executeQuery(
-      "SELECT * FROM teacher WHERE email = (?) LIMIT 1",
-      [email]
+      "SELECT id,email,password FROM teacher WHERE email = (?) LIMIT 1",
+      [teacherEmail, teacherPassword]
     );
     if (result.length > 0) {
       const teacher = result[0];
-      let passwordVerified = await bcrypt.compare(password, teacher.password);
+      let passwordVerified = await bcrypt.compare(
+        teacherPassword,
+        teacher.password
+      );
+
       if (!passwordVerified) {
         return false;
       }
