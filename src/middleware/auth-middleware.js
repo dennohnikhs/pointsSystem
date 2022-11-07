@@ -18,7 +18,6 @@ async function protect(req, res, next) {
       } else {
         req.body.currentTeacherId = decoded.id;
       }
-
       next();
     } else {
       return res.status(400).json({
