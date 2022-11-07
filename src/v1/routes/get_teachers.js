@@ -55,6 +55,8 @@ const router = express.Router();
  *     tags:
  *     - Teachers
  *     summary: Get all Teachers
+ *     security:
+ *     - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: q

@@ -48,19 +48,8 @@
  *     tags:
  *     - sessionPoints
  *     summary: Get all session's points
- *     parameters:
- *       - in: query
- *         name: q
- *         schema:
- *            type: string
- *         required: false
- *         description: get student's name with auto complete query parameters
- *       - in: query
- *         name: name
- *         schema:
- *            type: string
- *         required: false
- *         description: get students's name
+ *     security:
+ *     - bearerAuth: []
  *     responses:
  *       200:
  *         description: Success

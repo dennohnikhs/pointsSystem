@@ -52,6 +52,8 @@ const router = express.Router();
  *     tags:
  *     - Sessions
  *     summary: Get all sessions
+ *     security:
+ *     - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: term

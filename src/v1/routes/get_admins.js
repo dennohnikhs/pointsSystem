@@ -4,6 +4,23 @@ const router = express.Router();
 
 /**
  * @swagger
+ * /api/admins:
+ *  get:
+ *    security:              # <--- ADD THIS
+ *      - bearerAuth: []     # <--- ADD THIS
+ *    tags:
+ *      - Admins
+ *    description: Returns the list of admins
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: list of admins
+ *        schema:
+ *            $ref: '#components/schema/adminsResponse'
+ */
+/**
+ * @swagger
  *  components:
  *   schema:
  *     Admins:
@@ -54,31 +71,8 @@ const router = express.Router();
  *     tags:
  *     - Admins
  *     summary: Get all Admins
- *     parameters:
- *       - in: query
- *         name: q
- *         schema:
- *            type: string
- *         required: false
- *         description: get admins's name
- *       - in: query
- *         name: phone_number
- *         schema:
- *            type: string
- *         required: false
- *         description: get admins's phone number
- *       - in: query
- *         name: email
- *         schema:
- *            type: string
- *         required: false
- *         description: get admins's email
- *       - in: query
- *         name: password
- *         schema:
- *            type: string
- *         required: false
- *         description: get admins password
+ *     security:
+ *     - bearerAuth: []
  *     responses:
  *       200:
  *         description: Success

@@ -50,25 +50,8 @@ const router = express.Router();
  *     tags:
  *     - offenseType
  *     summary: Get all offense types
- *     parameters:
- *       - in: query
- *         name: q
- *         schema:
- *            type: string
- *         required: false
- *         description: get offense type name
- *       - in: query
- *         name: name
- *         schema:
- *            type: string
- *         required: false
- *         description: get offense type name
- *       - in: query
- *         name: points
- *         schema:
- *            type: string
- *         required: false
- *         description: get offense type points
+ *     security:
+ *     - bearerAuth: []
  *     responses:
  *       200:
  *         description: Success

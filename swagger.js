@@ -3,24 +3,25 @@ const swaggerUi = require("swagger-ui-express");
 
 const options = {
   definition: {
-    openapi: "3.0.0",
+    openapi: "3.0.1",
     info: {
       title: "POINTS SYSTEM ",
       description: "API DOCUMENTATION",
       version: "1.0.0",
     },
     basePath: "/",
-    securityDefinitions: {
-      Authorization: {
-        type: "apiKey",
-        name: "authorization",
-        in: "header",
-        description: "Authentication token",
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
       },
     },
     security: [
       {
-        Authorization: [],
+        bearerAuth: [],
       },
     ],
   },
