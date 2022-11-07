@@ -23,11 +23,28 @@ class Session {
     return false;
   }
 
-  static async getSession(sessionId) {
-    const result = await executeQuery("SELECT * FROM session WHERE id = (?)", [
-      sessionId,
-    ]);
-    return result;
+  static async getSession() {
+    const result = await executeQuery(
+      "SELECT s.id FROM session s WHERE s.start_date < NOW() AND s.end_date > NOW()",
+      []
+    );
+    if (result && result[0]) {
+      let sessionId = result[0].id;
+      return sessionId;
+    } else {
+      return false;
+    }
+  }
+  static async sessionStartDate() {
+    const result = await executeQuery(
+      "SELECT s.start_date FROM session s WHERE s.start_date < NOW() AND s.end_date > NOW()",
+      []
+    );
+    if (result && result[0]) {
+      return result[0].start_date;
+    } else {
+      return false;
+    }
   }
 }
 module.exports = Session;

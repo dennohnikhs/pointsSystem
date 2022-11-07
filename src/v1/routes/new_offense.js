@@ -1,5 +1,5 @@
 const express = require("express");
-const { addOffense } = require("../../controllers/offenseControllers");
+const addNewRecord = require("../../controllers/addNewRecord");
 const router = express.Router();
 /**
  * @openapi
@@ -49,5 +49,5 @@ const router = express.Router();
  *        description: Not Found
  */
 
-router.post("/api/offense/new", addOffense);
+router.post("/api/offense/new", addNewRecord);
 module.exports = router;

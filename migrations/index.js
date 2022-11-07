@@ -5,7 +5,7 @@ const { createSessionTable } = require("./create_table_session");
 const { createSessionPoints } = require("./create_table_session_points");
 const { createStudentsTable } = require("./create_table_student");
 const { createTableTeacher } = require("./create_table_teacher");
-const { updateStudentsTable } = require("./update_table_students");
+const { setDefaultPoints } = require("./set_default_points");
 
 (async () => {
   await createStudentsTable();
@@ -15,5 +15,5 @@ const { updateStudentsTable } = require("./update_table_students");
   await createSessionTable();
   await createSessionPoints();
   await createTableTeacher();
-  await updateStudentsTable();
+  await setDefaultPoints();
 })();

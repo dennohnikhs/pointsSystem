@@ -26,12 +26,15 @@ class OffenseType {
     return result;
   }
 
-  static async getOne(offenseTypeId) {
+  static async getPoints(offenseTypeId) {
     const result = await executeQuery(
-      "SELECT * FROM offense_type WHERE id = (?)",
+      "SELECT points AS points_deducted FROM offense_type WHERE id = (?)",
       [offenseTypeId]
     );
-    return result;
+    if (result && result[0]) {
+      return result[0].points_deducted;
+    }
   }
 }
+
 module.exports = OffenseType;

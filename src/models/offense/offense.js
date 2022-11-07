@@ -1,12 +1,20 @@
 const { executeQuery } = require("../../database/connection");
 
 class Offense {
-  static async addOne(offenseTypeId, studentId, comment) {
+  static async newRecord(
+    teacherId,
+    offenseTypeId,
+    studentId,
+    comment,
+    pointsDeducted,
+    week
+  ) {
     try {
-      await executeQuery(
-        "INSERT INTO offense (offense_type_id,student_id,comment) VALUES (?,?,?,?)"
-      ),
-        [offenseTypeId, studentId, comment];
+      let result = await executeQuery(
+        "INSERT INTO offense (teacher_id,offense_type_id,student_id,comment,points_deducted,week) VALUES (?,?,?,?,?,?)",
+        [teacherId, offenseTypeId, studentId, comment, pointsDeducted, week]
+      );
+      return result;
     } catch (error) {
       console.log(error);
     }

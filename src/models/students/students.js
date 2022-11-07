@@ -25,6 +25,16 @@ class Student {
     const result = await executeQuery("SELECT * FROM student", []);
     return result;
   }
+  static async getOne(studentId) {
+    const result = await executeQuery(
+      "SELECT id,name,class,stream,admission_number FROM student WHERE id = (?)",
+      [studentId]
+    );
+    if (result && result[0]) {
+      const studentDetails = result[0];
+      return studentDetails;
+    }
+  }
 }
 module.exports = {
   Student,

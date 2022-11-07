@@ -11,10 +11,13 @@ async function protect(req, res, next) {
       req.headers.authorization.startsWith("Bearer")
     ) {
       const token = req.headers.authorization.split(" ")[1];
-      jwt.verify(token, process.env.JWT_SECRET);
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const userId = decoded.id;
-      console.log(userId);
+
+      if (decoded.isAdmin) {
+        req.body.currentAdminId = decoded.id;
+      } else {
+        req.body.currentTeacherId = decoded.id;
+      }
 
       next();
     } else {

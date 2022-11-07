@@ -21,11 +21,14 @@ async function login(req, res) {
       req.body.email,
       req.body.password
     );
-    console.log(adminDetails);
     if (adminDetails) {
-      let token = jwt.sign({ id: adminDetails.id }, process.env.JWT_SECRET, {
-        expiresIn: "5d",
-      });
+      let token = jwt.sign(
+        { id: adminDetails.id, isAdmin: true },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "5d",
+        }
+      );
       return res.send({
         success: true,
         message: "Admin login successful",
@@ -43,9 +46,13 @@ async function login(req, res) {
       req.body.password
     );
     if (teacherDetails) {
-      let token = jwt.sign({ id: teacherDetails.id }, process.env.JWT_SECRET, {
-        expiresIn: "5d",
-      });
+      let token = jwt.sign(
+        { id: teacherDetails.id, isAdmin: false },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "5d",
+        }
+      );
       return res.send({
         success: true,
         message: "Teacher login successful",
@@ -59,10 +66,23 @@ async function login(req, res) {
     }
   }
 }
-async function getCurrentUserById() {
-  const token = req.body.token;
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  let userId = decoded.id;
-  console.log(userId);
+async function getCurrentUserById(req, res) {
+  try {
+    const token = req.body.token;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    let userId = decoded.id;
+    res.json({
+      success: true,
+      success_message: "currently logged in user id",
+      userId: userId,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      success_message: "cannot find the currently logged in user id",
+      error: error,
+    });
+  }
 }
 module.exports = { login, getCurrentUserById };

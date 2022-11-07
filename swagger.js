@@ -9,6 +9,20 @@ const options = {
       description: "API DOCUMENTATION",
       version: "1.0.0",
     },
+    basePath: "/",
+    securityDefinitions: {
+      Authorization: {
+        type: "apiKey",
+        name: "authorization",
+        in: "header",
+        description: "Authentication token",
+      },
+    },
+    security: [
+      {
+        Authorization: [],
+      },
+    ],
   },
   apis: ["./src/v1/routes/*.js"],
 };

@@ -10,7 +10,7 @@ async function createOffenseTable() {
         comment text NOT NULL,
         points_deducted double NOT NULL,
         week int(50) NOT NULL,
-        created_at datetime(6) NOT NULL)`;
+        created_at date(6) DEFAULT GETDATE())`;
     await executeQuery(sql, []);
     // console.log({ result });
     console.log("offense table created");

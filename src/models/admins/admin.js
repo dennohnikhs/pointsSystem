@@ -17,7 +17,6 @@ class Admin {
       "SELECT id,email, password FROM admin WHERE email = (?)LIMIT 1",
       [adminEmail, adminPassword]
     );
-    console.log(result);
     if (result.length > 0) {
       const admin = result[0];
       let passwordVerified = await bcrypt.compare(

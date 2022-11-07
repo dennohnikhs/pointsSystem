@@ -1,6 +1,7 @@
 function getWeek(sessionStart) {
-  const differenceFromNow =
-    new Date.getTime() - new Date(sessionStart).getTime();
+  let now = new Date();
+  let differenceFromNow =
+    new Date(now).getTime() - new Date(sessionStart).getTime();
 
   const getDays = Math.ceil(differenceFromNow / (1000 * 3600 * 24));
 
