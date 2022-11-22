@@ -61,25 +61,25 @@ const router = express.Router();
  *         schema:
  *            type: string
  *         required: false
- *         description: get student's name
+ *         description: student name
  *       - in: query
- *         name: admission_number
+ *         name: admissionNumber
  *         schema:
  *            type: string
  *         required: false
- *         description: get students's admission number
+ *         description: student admission number
  *       - in: query
  *         name: class
  *         schema:
  *            type: integer
  *         required: false
- *         description: get students's class
+ *         description: student class
  *       - in: query
  *         name: stream
  *         schema:
  *            type: string
  *         required: false
- *         description: get student's stream
+ *         description: student stream
  *     responses:
  *       200:
  *         description: Success

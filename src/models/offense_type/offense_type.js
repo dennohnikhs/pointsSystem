@@ -21,8 +21,14 @@ class OffenseType {
 
     return false;
   }
-  static async getAll() {
-    const result = await executeQuery("SELECT * FROM offense_type", []);
+  static async getAll(query) {
+    let sql = "SELECT * FROM offense_type";
+
+    if (query) {
+      sql += ` WHERE Name LIKE '%${query}%'`;
+    }
+
+    let result = await executeQuery(sql, []);
     return result;
   }
 

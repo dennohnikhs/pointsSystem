@@ -1,4 +1,5 @@
 const { executeQuery } = require("../../database/connection");
+const { buildQuery } = require("../../utils/util");
 
 class Student {
   static async addOne(studentName, admissionNumber, className, streamName) {
@@ -21,8 +22,22 @@ class Student {
 
     return false;
   }
-  static async getAll() {
-    const result = await executeQuery("SELECT * FROM student", []);
+  static async getAll(query, admissionNumber, stream, studentClass) {
+    const conditions = [];
+    if (query) {
+      conditions.push(`s.Name LIKE '%${query}%'`);
+    }
+    if (admissionNumber) {
+      conditions.push(` s.admission_number = "${admissionNumber}"`);
+    }
+    if (stream) {
+      conditions.push(` s.stream = "${stream}"`);
+    }
+    if (studentClass) {
+      conditions.push(` s.class = ${studentClass}`);
+    }
+    let sql = buildQuery("SELECT * FROM student s", conditions);
+    const result = await executeQuery(sql, []);
     return result;
   }
   static async getOne(studentId) {

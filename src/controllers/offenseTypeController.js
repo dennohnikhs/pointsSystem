@@ -32,7 +32,8 @@ async function addOffenseType(req, res) {
 }
 async function getAllOffenseTypes(req, res) {
   try {
-    let result = await OffenseType.getAll();
+    const query = req.query.q;
+    let result = await OffenseType.getAll(query);
     return res.json({
       success: true,
       success_message: "list of offense types",
