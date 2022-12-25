@@ -22,6 +22,16 @@ class Teacher {
 
     return false;
   }
+  static async findOne(email) {
+    const result = await executeQuery(
+      "SELECT COUNT(*) AS existing_count FROM teacher WHERE email = (?)",
+      [email]
+    );
+
+    if (result && result[0].existing_count > 0) return true;
+
+    return false;
+  }
 
   static async validateTeacher(teacherEmail, teacherPassword) {
     const result = await executeQuery(

@@ -3,8 +3,8 @@
 const { Teacher } = require("../models/teacher/teacher");
 const Admin = require("../models/admins/admin");
 const jwt = require("jsonwebtoken");
-
-// register
+const dotenv = require("dotenv");
+dotenv.config({ path: "config.env" });
 
 async function login(req, res) {
   const email = req.body.email;
